@@ -1,63 +1,90 @@
-# Miscellaneous
+# ==============================================================================
+# Flutter & Dart Enterprise Architecture - Git Ignore Rules
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# 操作系统生成文件 (Operating System Files)
+# ------------------------------------------------------------------------------
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+desktop.ini
+
+# Linux
+*~
+
+# ------------------------------------------------------------------------------
+# IDE 与编辑器配置 (IDE & Editors)
+# ------------------------------------------------------------------------------
+# Android Studio / IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+modules.xml
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/
+
+# ------------------------------------------------------------------------------
+# 通用临时文件与日志 (Miscellaneous & Logs)
+# ------------------------------------------------------------------------------
 *.class
-*.lock
 *.log
 *.pyc
 *.swp
 .buildlog/
-.history
 
-
-
-# Flutter repo-specific
-/bin/cache/
-/bin/internal/bootstrap.bat
-/bin/internal/bootstrap.sh
-/bin/mingit/
-/dev/benchmarks/mega_gallery/
-/dev/bots/.recipe_deps
-/dev/bots/android_tools/
-/dev/devicelab/ABresults*.json
-/dev/docs/doc/
-/dev/docs/flutter.docs.zip
-/dev/docs/lib/
-/dev/docs/pubspec.yaml
-/dev/integration_tests/**/xcuserdata
-/dev/integration_tests/**/Pods
-/packages/flutter/coverage/
-version
-analysis_benchmark.json
-
-# packages file containing multi-root paths
+# ------------------------------------------------------------------------------
+# Flutter / Dart 核心构建产物与缓存 (Flutter & Dart Build Artifacts)
+# ------------------------------------------------------------------------------
+**/.dart_tool/
+**/.packages
+**/.pub-preload-cache/
+**/.pub/
+**/build/
+**/flutter_*.png
 .packages.generated
-
-# Flutter/Dart/Pub related
-**/doc/api/
-.dart_tool/
 .flutter-plugins
 .flutter-plugins-dependencies
-**/generated_plugin_registrant.dart
-.packages
-.pub-preload-cache/
-.pub/
-build/
-flutter_*.png
+
+# 符号表与调试产物
+**/app.*.symbols
 linked_*.ds
 unlinked.ds
 unlinked_spec.ds
 
-# Android related
-**/android/**/gradle-wrapper.jar
-.gradle/
-**/android/captures/
-**/android/gradlew
-**/android/gradlew.bat
+# 文档生成产物
+**/doc/api/
+
+# ------------------------------------------------------------------------------
+# Android 平台构建产物与缓存
+# ------------------------------------------------------------------------------
+**/android/.gradle/
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
-**/android/key.properties
-*.jks
+**/android/.cxx/
+**/android/app/build/
+**/android/captures/
 
-# iOS/XCode related
+# ------------------------------------------------------------------------------
+# iOS 平台构建产物与缓存
+# ------------------------------------------------------------------------------
 **/ios/**/*.mode1v3
 **/ios/**/*.mode2v3
 **/ios/**/*.moved-aside
@@ -72,14 +99,14 @@ unlinked_spec.ds
 **/ios/**/Pods/
 **/ios/**/.symlinks/
 **/ios/**/profile
-**/ios/**/xcuserdata
+**/ios/**/xcuserdata/
 **/ios/.generated/
 **/ios/Flutter/.last_build_id
 **/ios/Flutter/App.framework
 **/ios/Flutter/Flutter.framework
 **/ios/Flutter/Flutter.podspec
 **/ios/Flutter/Generated.xcconfig
-**/ios/Flutter/ephemeral
+**/ios/Flutter/ephemeral/
 **/ios/Flutter/app.flx
 **/ios/Flutter/app.zip
 **/ios/Flutter/flutter_assets/
@@ -87,33 +114,59 @@ unlinked_spec.ds
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
 
+# ------------------------------------------------------------------------------
+# 桌面端 (macOS, Windows, Linux) 与 Web 平台
+# ------------------------------------------------------------------------------
 # macOS
-**/Flutter/ephemeral/
-**/Pods/
+**/macos/Flutter/ephemeral/
 **/macos/Flutter/GeneratedPluginRegistrant.swift
-**/macos/Flutter/ephemeral
-**/xcuserdata/
+**/macos/Pods/
+**/macos/Runner/GeneratedPluginRegistrant.*
 
 # Windows
+**/windows/flutter/ephemeral/
 **/windows/flutter/generated_plugin_registrant.cc
 **/windows/flutter/generated_plugin_registrant.h
 **/windows/flutter/generated_plugins.cmake
 
 # Linux
+**/linux/flutter/ephemeral/
 **/linux/flutter/generated_plugin_registrant.cc
 **/linux/flutter/generated_plugin_registrant.h
 **/linux/flutter/generated_plugins.cmake
 
-# Coverage
+# Web
+**/web/.dart_tool/
+
+# ------------------------------------------------------------------------------
+# 敏感信息、密钥与环境配置 (Secrets & Environment)
+# ------------------------------------------------------------------------------
+*.jks
+*.keystore
+*.p12
+*.key
+*.mobileprovision
+**/android/key.properties
+.env
+.env.*
+!.env.example
+
+# ------------------------------------------------------------------------------
+# 测试覆盖率 (Test Coverage)
+# ------------------------------------------------------------------------------
 coverage/
+**/coverage/
 
-# Symbols
-app.*.symbols
+# ------------------------------------------------------------------------------
+# 规则例外与白名单 (Exceptions & Whitelist)
+# ------------------------------------------------------------------------------
+# 必须保留 Gradle 包装器，否则 CI 与无全局 Gradle 环境无法构建
+!**/android/gradle/wrapper/gradle-wrapper.jar
+!**/android/gradlew
+!**/android/gradlew.bat
 
-# Exceptions to above rules.
+# 保留 Xcode 默认用户模式配置
 !**/ios/**/default.mode1v3
 !**/ios/**/default.mode2v3
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
-!/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
-!/dev/ci/**/Gemfile.lock
