@@ -53,9 +53,10 @@
 flutter-enterprise-architecture/
 ├── docs/                               # 核心技术文档体系
 │   ├── tutorial_01/                    # 专栏一：面向前端开发者的企业级开发体系
-│   └── tutorial_02/                    # 专栏二：企业级跨端开发架构全景指南
-├── projects/                           # 【规划中】配套企业实战工程与 Demo
-│   └── enterprise_app/                 # 生产级 App 完整骨架工程
+│   ├── tutorial_02/                    # 专栏二：企业级跨端开发架构全景指南
+│   └── guides/                         # 操作手册（真机调试等实践指引）
+├── project/                            # 配套实战工程（可放多个 App）
+│   └── scjh_app/                       # 企业级 Flutter App 骨架，可运行
 ├── LICENSE                             # MIT 开源协议
 ├── README.md                           # 仓库总览与导航指引
 └── .gitignore                          # 规范化 Git 忽略配置
